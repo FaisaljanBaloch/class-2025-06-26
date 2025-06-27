@@ -1,0 +1,9 @@
+---
+title: "About"
+---
+
+I am Faisal Jan from Turbat, Pakistan. I have attended my graduate study at University of Turbat.
+
+I have built this project during [Kane's Data Science Bootcamp](https://bootcamp.davidkane.info/) with help of ChatGPT. 
+
+Thank you for your consideration.

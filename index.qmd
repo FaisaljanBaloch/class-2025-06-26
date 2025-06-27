@@ -1,0 +1,56 @@
+---
+title: "Race and Income"
+author: "Faisal Jan"
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(plotly)
+
+# Change to modern county names
+county_to_borough <- c(
+  "Kings" = "Brooklyn",
+  "Queens" = "Queens",
+  "New York" = "Manhattan",
+  "Bronx" = "Bronx",
+  "Richmond" = "Staten Island"
+)
+
+nyc_data <- read_csv("https://raw.githubusercontent.com/PPBDS/primer.data/master/data-raw/nyc_tracts.csv", show_col_types = FALSE) |>
+  mutate(county = str_extract(tract, "[^;]+(?= County)")) |>
+  mutate(borough = recode(county, !!!county_to_borough)) |>
+  drop_na()
+```
+
+Let's make some analysis.
+
+```{r}
+# Base ggplot
+p <- ggplot(nyc_data, aes(x = race, y = med_income, fill = borough, text = paste(
+  "Tract:", tract,
+  "<br>Race:", race,
+  "<br>Borough:", borough,
+  "<br>Median Income: $", med_income
+))) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.7, color = "black") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::dollar_format()) +  # ✅ format y-axis
+  labs(
+    title = "Distribution of Median Income by Race and Borough",
+    x = "Race",
+    y = "Median Household Income"
+  ) +
+  theme_minimal()
+
+# Make it interactive
+interactive_plot <- ggplotly(p, tooltip = "text")
+
+# Display
+interactive_plot
+```
+
+### Summary
+The dataset includes 2,242 census tracts from New York City, providing median household income by racial group across different boroughs. The data reveals notable variation in income both geographically and demographically. For instance, White households tend to have higher median incomes on average, particularly in areas of Queens and Manhattan. In contrast, Hispanic and Black households are more frequently represented in lower income brackets, though there are exceptions—some tracts with Black residents report relatively high incomes, especially in Queens. A portion of the data is missing income values, predominantly in tracts associated with Black or Hispanic populations, which may reflect underlying data collection or reporting gaps. Overall, the dataset highlights disparities in income across racial and geographic lines in New York City, suggesting systemic economic inequalities tied to both race and location.
