@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Race and Income",
+    "section": "",
+    "text": "Let’s make some analysis.\n\n\n\n\n\n\n\nSummary\nThe dataset includes 2,242 census tracts from New York City, providing median household income by racial group across different boroughs. The data reveals notable variation in income both geographically and demographically. For instance, White households tend to have higher median incomes on average, particularly in areas of Queens and Manhattan. In contrast, Hispanic and Black households are more frequently represented in lower income brackets, though there are exceptions—some tracts with Black residents report relatively high incomes, especially in Queens. A portion of the data is missing income values, predominantly in tracts associated with Black or Hispanic populations, which may reflect underlying data collection or reporting gaps. Overall, the dataset highlights disparities in income across racial and geographic lines in New York City, suggesting systemic economic inequalities tied to both race and location."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am Faisal Jan from Turbat, Pakistan. I have attended my graduate study at University of Turbat.\nI have built this project during Kane’s Data Science Bootcamp with help of ChatGPT.\nThank you for your consideration."
+  }
+]
